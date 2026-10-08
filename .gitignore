@@ -1,0 +1,14 @@
+# Secrets and local settings
+.env
+schedule.json
+
+# Collected data (contains real account information)
+output/
+*.db
+
+# Python
+__pycache__/
+*.pyc
+
+# Scratch files used while building the screenshots
+tools/_build/

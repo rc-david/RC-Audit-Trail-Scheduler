@@ -1,0 +1,206 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<!--
+  Audit Trail viewer TEMPLATE. rc_audit_trail.py copies this file and replaces four placeholders to
+  produce one self-contained page (no network, no external libraries):
+    __DATA__      array of flattened audit events
+    __META__      one-line description of the run (shown under the title)
+    __SCHEDULE__  the saved schedule settings (shown read-only if no local helper is running)
+    "__TOKEN__"   per-session API token; only the local helper (--serve) fills this in
+  Sections: CSS theme -> header -> schedule panel -> filter panel -> table -> script.
+-->
+<title>RingCentral Audit Trail Viewer</title><style>
+/* Colours are CSS variables so light and dark mode only differ in this block. Light is the default. */
+:root{--bg:#fff;--fg:#1d2330;--mut:#5b6475;--ctl:#fff;--bd:#b8c0cc;--line:#eceff3;--wrap:#d5dae1;--th:#f4f6f9;--hov:#f7faff;--acc:#0b5cad;--card:#f7f9fc;--pill:#e6f0fb;--warn:#8a5a00;--warnbg:#fff4d6;--ok:#1a7f37;--bad:#b42318}
+:root[data-theme=dark]{--bg:#14181f;--fg:#e6e9ef;--mut:#9aa3b2;--ctl:#1d232d;--bd:#3a4352;--line:#2a313d;--wrap:#2a313d;--th:#1d232d;--hov:#1a2230;--acc:#3b82d6;--card:#1a2029;--pill:#1f3350;--warn:#f0c36a;--warnbg:#3a2f12;--ok:#4cc16b;--bad:#ff7b6e}
+*{box-sizing:border-box}
+body{font:14px system-ui,sans-serif;margin:16px;color:var(--fg);background:var(--bg)}
+h1{font-size:18px;margin:0 0 4px}h2{font-size:14px;margin:0 0 2px}.sub,.hint{color:var(--mut)}.hint{font-size:12.5px}
+.top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:10px}.top .btns{display:flex;gap:8px}
+input,button,select{font:inherit;padding:5px 8px;border:1px solid var(--bd);border-radius:5px;background:var(--ctl);color:var(--fg)}
+button{cursor:pointer}button:disabled{opacity:.5;cursor:default}button.on,button.primary{background:var(--acc);color:#fff;border-color:var(--acc)}
+.card{background:var(--card);border:1px solid var(--wrap);border-radius:8px;padding:12px 14px;margin-bottom:12px}
+.row{display:flex;flex-wrap:wrap;gap:14px 20px;align-items:flex-end;margin-top:10px}.row:first-of-type{margin-top:8px}
+.field{display:flex;flex-direction:column;gap:3px}.field>label,.lbl{font-size:12px;font-weight:600;color:var(--mut)}
+/* quick-filter chips */
+.chips{display:flex;flex-wrap:wrap;gap:6px}.chip{border-radius:16px;padding:4px 11px}.chip b{font-weight:600;opacity:.75;margin-left:4px}.chip.on b{opacity:1}
+.chip.zero{opacity:.45}
+/* "what is filtered right now" strip */
+.active{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-top:12px;padding-top:10px;border-top:1px dashed var(--wrap)}
+.pill{background:var(--pill);border-radius:14px;padding:2px 4px 2px 10px;font-size:12.5px;display:inline-flex;gap:4px;align-items:center}
+.pill button{border:0;background:transparent;padding:0 6px;font-size:15px;line-height:1;color:var(--mut)}
+.link{border:0;background:transparent;color:var(--acc);padding:2px 4px;text-decoration:underline}
+.cnt{font-weight:600}
+/* results table: sticky headings, second sticky row holds the per-column filter boxes */
+.wrap{overflow:auto;max-height:70vh;border:1px solid var(--wrap)}table{border-collapse:collapse;width:100%}
+th,td{padding:5px 8px;border-bottom:1px solid var(--line);text-align:left;white-space:nowrap;max-width:360px;overflow:hidden;text-overflow:ellipsis}
+th{position:sticky;top:0;background:var(--th);cursor:pointer}thead tr.f th{top:30px;background:var(--bg);cursor:default}
+thead tr.f input{width:100%;padding:3px 5px}thead tr.f input.has{border-color:var(--acc);box-shadow:0 0 0 1px var(--acc)}
+tr:hover td{background:var(--hov)}
+/* on/off switch in the schedule panel */
+.switch{display:inline-flex;align-items:center;gap:8px;cursor:pointer;font-weight:600}.switch input{position:absolute;opacity:0}
+.track{width:38px;height:22px;border-radius:11px;background:var(--bd);position:relative;transition:.15s}.track:after{content:"";position:absolute;top:2px;left:2px;width:18px;height:18px;border-radius:50%;background:#fff;transition:.15s}
+.switch input:checked+.track{background:var(--ok)}.switch input:checked+.track:after{left:18px}.switch input:focus-visible+.track{outline:2px solid var(--acc)}
+.num{width:70px}.msg{margin-top:8px;padding:6px 10px;border-radius:6px;font-size:13px}.msg.warn{background:var(--warnbg);color:var(--warn)}.msg.ok{color:var(--ok)}.msg.bad{color:var(--bad)}
+.status{margin-top:10px;font-size:13px}#settings{display:none}#settings.open{display:block}
+</style></head><body>
+
+<!-- HEADER: title, run description, panel toggles -->
+<div class="top"><div><h1>RingCentral Audit Trail</h1><div class="sub" id="meta"></div></div>
+<div class="btns"><button id="gear">&#9881; Schedule settings</button><button id="theme" title="Switch light/dark mode"></button></div></div>
+
+<!-- SCHEDULE PANEL (hidden until the gear button is clicked). Editable only when served by `--serve`. -->
+<div class="card" id="settings">
+ <h2>Automatic collection</h2>
+ <div class="hint">Controls the Windows scheduled task that pulls new audit events for you.</div>
+ <div class="msg warn" id="offline" style="display:none">Settings are read-only here. To change them, start this page with <b>open_viewer.bat</b> (it runs a small helper on your own computer only).</div>
+ <div class="row">
+  <div class="field"><label>Automatic collection</label><label class="switch"><input type="checkbox" id="s_on"><span class="track"></span><span id="s_on_t"></span></label></div>
+  <div class="field"><label>Run every (days)</label><input class="num" type="number" id="s_every" min="1" max="365"></div>
+  <div class="field"><label>At this time</label><input type="time" id="s_time"></div>
+  <div class="field"><label>Each run retrieves the last (days)</label><input class="num" type="number" id="s_win" min="1" max="180"></div>
+ </div>
+ <div class="hint" style="margin-top:6px">Keep the retrieval window a few days longer than the run interval so a late run never leaves a gap. RingCentral keeps at most 180 days.</div>
+ <div class="msg warn" id="s_warn" style="display:none"></div>
+ <div class="row"><button class="primary" id="s_save">Save schedule</button><button id="s_run">Run now</button><span id="s_msg"></span></div>
+ <div class="status" id="s_status"></div>
+</div>
+
+<!-- FILTER PANEL: every control narrows the table; all of them combine (logical AND) -->
+<div class="card" id="filters">
+ <h2>Filter events</h2>
+ <div class="hint">Everything is shown until you choose a filter. Combine as many as you like; each one narrows the table further. You can also type in the box under any column heading.</div>
+ <div class="row">
+  <div class="field"><label for="q">Search all fields</label><input id="q" placeholder="e.g. 1042 or Jane Doe" size="28"></div>
+  <div class="field"><label>From date</label><input type="date" id="d1"></div>
+  <div class="field"><label>To date</label><input type="date" id="d2"></div>
+  <div class="field"><label for="who">Done by</label><select id="who"></select></div>
+  <div class="field"><label for="exact">Exact action</label><select id="exact"></select></div>
+ </div>
+ <div class="row"><div class="field"><span class="lbl">Quick filters &mdash; what happened? <span style="font-weight:400">(pick one or more; the number is how many events match)</span></span><div class="chips" id="chips"></div></div></div>
+ <div class="active"><span class="cnt" id="cnt"></span><span id="pills"></span><button class="link" id="clear">Clear all filters</button><button id="exp" style="margin-left:auto">Export these rows as CSV</button></div>
+</div>
+
+<!-- RESULTS TABLE: header row, per-column filter row, then one <tr> per event (built by draw()) -->
+<div class="wrap"><table><thead><tr id="h"></tr><tr class="f" id="f"></tr></thead><tbody id="b"></tbody></table></div>
+
+<script>
+// ---- injected by rc_audit_trail.py -------------------------------------------------------
+const DATA=__DATA__, META=__META__, SCHED=__SCHEDULE__, TOKEN="__TOKEN__";
+// LIVE = served by the local helper (token was replaced), so schedule changes are possible.
+const LIVE=!TOKEN.startsWith("__");
+const $=id=>document.getElementById(id);
+// Escape text before putting it in HTML: event data is untrusted (it can contain names typed by users).
+const esc=v=>String(v??'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;');
+
+// ---- light / dark theme: defaults to light, remembers the choice when the browser allows storage
+function setTheme(t,save){document.documentElement.dataset.theme=t;$('theme').textContent=t==='dark'?'Light mode':'Dark mode';
+ if(save){try{localStorage.setItem('rc-audit-theme',t)}catch(e){}}}
+let saved=null;try{saved=localStorage.getItem('rc-audit-theme')}catch(e){}
+setTheme(saved==='dark'?'dark':'light',false);
+$('theme').onclick=()=>setTheme(document.documentElement.dataset.theme==='dark'?'light':'dark',true);
+$('meta').textContent=META;
+
+// ---- column discovery: the table adapts to whatever fields the API returned ----------------
+const cols=[...new Set(DATA.flatMap(r=>Object.keys(r)))];
+const tcol=cols.find(c=>/time|date/i.test(c));                                   // timestamp column (sort + date filter)
+const acol=cols.find(c=>/^actionid$/i.test(c))||cols.find(c=>/action/i.test(c)); // action column (drives chips + dropdown)
+const ccol=cols.find(c=>/comment/i.test(c));                                     // free-text description, if present
+const wcol=cols.find(c=>/^initiator\.name$/i.test(c));                           // who performed the action
+// Text the quick-filter chips match against. Deliberately the action id (+comment), NOT eventType:
+// in real data eventType says "Create" even for deletions, so it is not a reliable signal.
+const key=r=>((r[acol]??'')+' '+(r[ccol]??'')).toLowerCase();
+// [label, pattern tested against key(r), hover explanation]. Add or edit entries to create your own quick filters.
+const CHIPS=[
+ ['Anything deleted',/delete/,'Any action with DELETE in it: extensions, rules, numbers, queues and so on'],
+ ['Extension deleted',/delete_user/,'Only DELETE_USER actions: an extension (user) was removed'],
+ ['Added / assigned',/^(add|assign)/,'Something was added or assigned: users, numbers, queue members'],
+ ['Changed',/^change/,'A setting was changed'],
+ ['Released',/^release/,'A phone number was released'],
+ ['Logins',/login/,'Successful and failed sign-ins']];
+// S = the complete filter state; every control writes into it and draw() reads from it.
+let S={q:'',d1:'',d2:'',who:'',exact:'',chips:new Set(),col:{}};
+let sort={c:tcol,d:-1};   // newest first by default
+
+// ---- build the filter controls ------------------------------------------------------------
+// <option>s listing each distinct value in a column with its count, e.g. "DELETE_USER:USER (1)"
+const opts=(col,label)=>{const c={};DATA.forEach(r=>{const v=r[col];if(v)c[v]=(c[v]||0)+1});
+ return '<option value="">'+label+'</option>'+Object.keys(c).sort().map(v=>'<option value="'+esc(v)+'">'+esc(v)+' ('+c[v]+')</option>').join('')};
+$('exact').innerHTML=acol?opts(acol,'All actions'):'<option>n/a</option>';
+$('who').innerHTML=wcol?opts(wcol,'Everyone'):'<option>n/a</option>';
+// one button per quick filter; the count is computed once over the whole data set
+CHIPS.forEach(([n,re,tip])=>{const k=DATA.filter(r=>re.test(key(r))).length;
+ const b=document.createElement('button');b.className='chip'+(k?'':' zero');b.title=tip;b.dataset.n=n;b.innerHTML=esc(n)+'<b>'+k+'</b>';
+ b.onclick=()=>{S.chips.has(n)?S.chips.delete(n):S.chips.add(n);draw()};$('chips').append(b)});
+// table heading (click = sort) and, beneath it, a "contains…" filter box per column
+cols.forEach(c=>{const th=document.createElement('th');th.textContent=c;th.title='Click to sort';th.onclick=()=>{sort={c,d:sort.c==c?-sort.d:1};draw()};$('h').append(th);
+ const f=document.createElement('th'),i=document.createElement('input');i.placeholder='contains…';i.dataset.c=c;
+ i.oninput=()=>{S.col[c]=i.value.trim();draw()};f.append(i);$('f').append(f)});
+$('q').oninput=()=>{S.q=$('q').value.trim();draw()};
+$('d1').oninput=()=>{S.d1=$('d1').value;draw()};$('d2').oninput=()=>{S.d2=$('d2').value;draw()};
+$('who').onchange=()=>{S.who=$('who').value;draw()};$('exact').onchange=()=>{S.exact=$('exact').value;draw()};
+$('clear').onclick=()=>{S={q:'',d1:'',d2:'',who:'',exact:'',chips:new Set(),col:{}};
+ document.querySelectorAll('#filters input,#f input').forEach(i=>i.value='');$('who').value='';$('exact').value='';draw()};
+
+// ---- filtering: an event is shown only if it passes EVERY active filter --------------------
+function rows(){const q=S.q.toLowerCase();
+ return DATA.filter(r=>{
+  if(q&&!Object.values(r).join(' ').toLowerCase().includes(q))return false;                       // search box
+  if(S.chips.size&&![...S.chips].some(n=>CHIPS.find(c=>c[0]==n)[1].test(key(r))))return false;    // chips: ANY selected chip (OR)
+  if(S.exact&&r[acol]!==S.exact)return false;if(S.who&&r[wcol]!==S.who)return false;               // dropdowns: exact match
+  for(const c in S.col)if(S.col[c]&&!String(r[c]??'').toLowerCase().includes(S.col[c].toLowerCase()))return false; // column boxes
+  if(tcol){const t=String(r[tcol]).slice(0,10);if(S.d1&&t<S.d1)return false;if(S.d2&&t>S.d2)return false} // date range (UTC date)
+  return true}).sort((a,b)=>{const x=a[sort.c]??'',y=b[sort.c]??'';return (x>y?1:x<y?-1:0)*sort.d})}
+// Removable "pill" for every active filter, so it is always clear why rows are hidden.
+function pills(){const p=[];const add=(t,fn)=>p.push([t,fn]);
+ if(S.q)add('Search: '+S.q,()=>{S.q='';$('q').value=''});
+ if(S.d1)add('From '+S.d1,()=>{S.d1='';$('d1').value=''});if(S.d2)add('To '+S.d2,()=>{S.d2='';$('d2').value=''});
+ if(S.who)add('Done by: '+S.who,()=>{S.who='';$('who').value=''});if(S.exact)add('Action: '+S.exact,()=>{S.exact='';$('exact').value=''});
+ S.chips.forEach(n=>add(n,()=>S.chips.delete(n)));
+ for(const c in S.col)if(S.col[c])add(c+' contains "'+S.col[c]+'"',()=>{S.col[c]='';document.querySelector('#f input[data-c="'+c+'"]').value=''});
+ return p}
+// Redraw everything that depends on the filter state: count line, pills, chip highlight, table body.
+function draw(){const R=rows(),P=pills();
+ $('cnt').textContent='Showing '+R.length+' of '+DATA.length+' events';
+ $('pills').innerHTML='';P.forEach(([t,fn])=>{const s=document.createElement('span');s.className='pill';s.innerHTML=esc(t);
+  const x=document.createElement('button');x.textContent='×';x.title='Remove this filter';x.onclick=()=>{fn();draw()};s.append(x);$('pills').append(s)});
+ $('clear').style.display=P.length?'':'none';
+ document.querySelectorAll('.chip').forEach(b=>b.classList.toggle('on',S.chips.has(b.dataset.n)));
+ document.querySelectorAll('#f input').forEach(i=>i.classList.toggle('has',!!i.value.trim()));
+ $('b').innerHTML=R.map(r=>'<tr>'+cols.map(c=>'<td title="'+esc(r[c])+'">'+esc(r[c])+'</td>').join('')+'</tr>').join('')}
+// Export exactly the rows currently shown (all columns), as CSV, entirely in the browser.
+$('exp').onclick=()=>{const R=rows(),e=v=>'"'+String(v??'').replace(/"/g,'""')+'"';
+ const s=[cols.map(e).join(',')].concat(R.map(r=>cols.map(c=>e(r[c])).join(','))).join('\n');
+ const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([s],{type:'text/csv'}));a.download='audit_filtered.csv';a.click()};
+
+// ---- schedule settings panel ----------------------------------------------------------------
+$('gear').onclick=()=>{$('settings').classList.toggle('open');if($('settings').classList.contains('open'))loadSched()};
+const msg=(t,c)=>{$('s_msg').className='msg '+(c||'');$('s_msg').textContent=t};
+function fill(c){$('s_on').checked=!!c.enabled;$('s_every').value=c.every_days;$('s_time').value=c.time;$('s_win').value=c.window_days;onChange()}
+// live validation hint: a window shorter than the interval would silently miss events
+function onChange(){$('s_on_t').textContent=$('s_on').checked?'On':'Off';
+ const e=+$('s_every').value,w=+$('s_win').value,warn=$('s_warn');
+ if(w&&e&&w<e){warn.style.display='';warn.textContent='The retrieval window ('+w+' days) is shorter than the run interval ('+e+' days). Events in between would be missed. Use at least '+e+', ideally '+(e+5)+'.'}
+ else if(w>180){warn.style.display='';warn.textContent='RingCentral keeps at most 180 days of history.'}else warn.style.display='none'}
+['s_on','s_every','s_time','s_win'].forEach(id=>$(id).oninput=onChange);
+function showStatus(t,lr){if(!t){$('s_status').textContent='';return}
+ const f=v=>v?new Date(v).toLocaleString():'-';
+ let h;
+ if(!t.exists)h='Windows task: not created yet. Save the schedule to create it.';
+ else h='Windows task: <b>'+esc(t.state)+'</b> &middot; next run: <b>'+(t.state=='Disabled'?'none (off)':f(t.next))+'</b> &middot; last run: '+f(t.last);
+ // Result of the most recent collection. This is the only place a failed *scheduled* run becomes visible.
+ if(lr)h+='<div class="msg '+(lr.ok?'ok':'bad')+'" style="margin-top:6px">Last collection ('+f(lr.time)+'): <b>'+(lr.ok?'succeeded':'FAILED')+'</b> &mdash; '+esc(lr.message)+
+  (lr.ok?'':'<br>Run <code>python rc_audit_trail.py --check</code> for step-by-step fixes. Details: <code>output/run_log.txt</code>.')+'</div>';
+ $('s_status').innerHTML=h}
+// Call the local helper; the token proves the request comes from the page the helper served.
+async function api(path,body){const r=await fetch(path,{method:body?'POST':'GET',headers:{'X-Token':TOKEN,'Content-Type':'application/json'},body:body?JSON.stringify(body):undefined});
+ const j=await r.json();if(!r.ok)throw new Error(j.error||r.statusText);return j}
+// Opening the panel: without the helper, show the saved settings read-only; with it, load live status.
+async function loadSched(){fill(SCHED);
+ ['s_on','s_every','s_time','s_win','s_save','s_run'].forEach(id=>$(id).disabled=!LIVE);$('offline').style.display=LIVE?'none':'';
+ if(!LIVE){$('s_status').textContent='Showing the settings saved at the time of the last run.';return}
+ try{const j=await api('/api/schedule');fill(j.config);showStatus(j.task,j.last_run)}catch(e){msg(e.message,'bad')}}
+$('s_save').onclick=async()=>{msg('Saving…');try{const j=await api('/api/schedule',{enabled:$('s_on').checked,every_days:+$('s_every').value,time:$('s_time').value,window_days:+$('s_win').value});
+ fill(j.config);showStatus(j.task,j.last_run);msg('Saved and applied.','ok')}catch(e){msg(e.message,'bad')}};
+$('s_run').onclick=async()=>{msg('Starting…');try{await api('/api/run',{});msg('Collection started. Reopen this page in a minute for the new data.','ok')}catch(e){msg(e.message,'bad')}};
+draw();
+</script></body></html>

@@ -1,0 +1,4 @@
+# The collector itself needs only the Python standard library (3.9+).
+# Install these ONLY if you use the matching --save option.
+psycopg[binary]>=3.1    # --save postgres
+pyodbc>=5.0             # --save mssql (also install the Microsoft ODBC Driver for SQL Server)

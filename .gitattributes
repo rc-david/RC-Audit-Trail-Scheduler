@@ -1,0 +1,4 @@
+# Normalise line endings: LF in the repository, native on checkout; Windows launchers keep CRLF.
+* text=auto
+*.bat text eol=crlf
+*.png binary

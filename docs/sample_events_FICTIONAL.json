@@ -1,0 +1,1265 @@
+[
+ {
+  "id": "5810d60e-a729-41b9-a8c1-47437abec539",
+  "eventTime": "2026-01-15T09:09:00.000Z",
+  "accountId": "1000000001",
+  "actionId": "RELEASE_NUMBER",
+  "clientIp": "198.51.100.7",
+  "initiator": {
+   "extensionId": "1000000003",
+   "extensionNumber": "103",
+   "name": "Jordan Lee",
+   "role": "Admin"
+  },
+  "eventType": "Create",
+  "details": {
+   "parameters": [
+    {
+     "key": "",
+     "value": ""
+    }
+   ]
+  },
+  "target": {
+   "objectId": "25722095673",
+   "objectType": "Extension",
+   "name": "Support Queue",
+   "extensionNumber": "20002"
+  }
+ },
+ {
+  "id": "5e8766ed-88da-4401-ab40-13ef254b0c4e",
+  "eventTime": "2026-01-15T06:21:00.000Z",
+  "accountId": "1000000001",
+  "actionId": "ADD_EXTENSION:NON_USER",
+  "clientIp": "198.51.100.7",
+  "initiator": {
+   "extensionId": "1000000002",
+   "extensionNumber": "102",
+   "name": "Priya Shah",
+   "role": "Admin"
+  },
+  "eventType": "Create",
+  "details": {
+   "parameters": [
+    {
+     "key": "",
+     "value": ""
+    }
+   ]
+  },
+  "target": {
+   "objectId": "82409721010",
+   "objectType": "Extension",
+   "name": "Chris Taylor",
+   "extensionNumber": "1044"
+  }
+ },
+ {
+  "id": "abd0d7fb-1292-4185-90e4-0d54712ea6b3",
+  "eventTime": "2026-01-14T05:45:00.000Z",
+  "accountId": "1000000001",
+  "actionId": "DELETE_USER:USER",
+  "clientIp": "203.0.113.22",
+  "initiator": {
+   "extensionId": "1000000001",
+   "extensionNumber": "101",
+   "name": "Alex Morgan",
+   "role": "Super Admin"
+  },
+  "eventType": "Create",
+  "details": {
+   "parameters": [
+    {
+     "key": "",
+     "value": ""
+    }
+   ]
+  },
+  "target": {
+   "objectId": "36083855085",
+   "objectType": "Extension",
+   "name": "Dana Kim",
+   "extensionNumber": "1045"
+  }
+ },
+ {
+  "id": "4787f93b-ca44-4b86-8726-e25cfd56a926",
+  "eventTime": "2026-01-14T05:30:00.000Z",
+  "accountId": "1000000001",
+  "actionId": "ADD_USER_TO_CQ",
+  "clientIp": "203.0.113.22",
+  "initiator": {
+   "extensionId": "1000000002",
+   "extensionNumber": "102",
+   "name": "Priya Shah",
+   "role": "Admin"
+  },
+  "eventType": "Create",
+  "details": {
+   "parameters": [
+    {
+     "key": "",
+     "value": ""
+    }
+   ]
+  },
+  "target": {
+   "objectId": "71608217463",
+   "objectType": "Extension",
+   "name": "Main Office",
+   "extensionNumber": "20001"
+  }
+ },
+ {
+  "id": "c7ac1491-def8-4334-a647-cb8f74e69a5d",
+  "eventTime": "2026-01-13T03:05:00.000Z",
+  "accountId": "1000000001",
+  "actionId": "RELEASE_NUMBER",
+  "clientIp": "198.51.100.7",
+  "initiator": {
+   "extensionId": "1000000003",
+   "extensionNumber": "103",
+   "name": "Jordan Lee",
+   "role": "Admin"
+  },
+  "eventType": "Create",
+  "details": {
+   "parameters": [
+    {
+     "key": "",
+     "value": ""
+    }
+   ]
+  },
+  "target": {
+   "objectId": "86441282979",
+   "objectType": "Extension",
+   "name": "Main Office",
+   "extensionNumber": "20001"
+  }
+ },
+ {
+  "id": "4f426dcb-b394-4b36-bb2d-420f0f88080b",
+  "eventTime": "2026-01-12T16:19:00.000Z",
+  "accountId": "1000000001",
+  "actionId": "ADD_USER_TO_CQ",
+  "clientIp": "198.51.100.7",
+  "initiator": {
+   "extensionId": "1000000003",
+   "extensionNumber": "103",
+   "name": "Jordan Lee",
+   "role": "Admin"
+  },
+  "eventType": "Create",
+  "details": {
+   "parameters": [
+    {
+     "key": "",
+     "value": ""
+    }
+   ]
+  },
+  "target": {
+   "objectId": "73659682213",
+   "objectType": "Extension",
+   "name": "Main Office",
+   "extensionNumber": "20001"
+  }
+ },
+ {
+  "id": "78572976-3a12-417c-9a26-f88938703800",
+  "eventTime": "2026-01-12T00:48:00.000Z",
+  "accountId": "1000000001",
+  "actionId": "ADD_CUSTOM_RULE:BizLocation",
+  "clientIp": "203.0.113.22",
+  "initiator": {
+   "extensionId": "1000000002",
+   "extensionNumber": "102",
+   "name": "Priya Shah",
+   "role": "Admin"
+  },
+  "eventType": "Create",
+  "details": {
+   "parameters": [
+    {
+     "key": "",
+     "value": ""
+    }
+   ]
+  },
+  "target": {
+   "objectId": "75302286355",
+   "objectType": "Extension",
+   "name": "Chris Taylor",
+   "extensionNumber": "1044"
+  }
+ },
+ {
+  "id": "3d9c1724-11e2-4b8f-ab0d-549b6f03675a",
+  "eventTime": "2026-01-11T18:55:00.000Z",
+  "accountId": "1000000001",
+  "actionId": "ASSIGN_SMS_RECIPIENT:CALL_QUEUE",
+  "clientIp": "198.51.100.7",
+  "initiator": {
+   "extensionId": "1000000001",
+   "extensionNumber": "101",
+   "name": "Alex Morgan",
+   "role": "Super Admin"
+  },
+  "eventType": "UPDATE",
+  "details": {
+   "parameters": [
+    {
+     "key": "",
+     "value": ""
+    }
+   ]
+  },
+  "target": {
+   "objectId": "16118263334",
+   "objectType": "Extension",
+   "name": "Jane Doe",
+   "extensionNumber": "1042"
+  }
+ },
+ {
+  "id": "1f525265-c8b0-47ee-8d82-feacab6286cd",
+  "eventTime": "2026-01-11T12:03:00.000Z",
+  "accountId": "1000000001",
+  "actionId": "DELETE_USER:USER",
+  "clientIp": "203.0.113.10",
+  "initiator": {
+   "extensionId": "1000000002",
+   "extensionNumber": "102",
+   "name": "Priya Shah",
+   "role": "Admin"
+  },
+  "eventType": "Create",
+  "details": {
+   "parameters": [
+    {
+     "key": "",
+     "value": ""
+    }
+   ]
+  },
+  "target": {
+   "objectId": "28752614435",
+   "objectType": "Extension",
+   "name": "Sam Rivera",
+   "extensionNumber": "1043"
+  }
+ },
+ {
+  "id": "072235c2-8fcd-4f40-b3c1-cd2c81f98b52",
+  "eventTime": "2026-01-11T06:12:00.000Z",
+  "accountId": "1000000001",
+  "actionId": "ASSIGN_NUMBER",
+  "clientIp": "203.0.113.10",
+  "initiator": {
+   "extensionId": "1000000002",
+   "extensionNumber": "102",
+   "name": "Priya Shah",
+   "role": "Admin"
+  },
+  "eventType": "Create",
+  "details": {
+   "parameters": [
+    {
+     "key": "",
+     "value": ""
+    }
+   ]
+  },
+  "target": {
+   "objectId": "54853410314",
+   "objectType": "Extension",
+   "name": "Jane Doe",
+   "extensionNumber": "1042"
+  }
+ },
+ {
+  "id": "301850c5-a38f-4547-923a-736994e3bf91",
+  "eventTime": "2026-01-11T01:37:00.000Z",
+  "accountId": "1000000001",
+  "actionId": "DOWNLOAD_USER_LIST",
+  "clientIp": "203.0.113.10",
+  "initiator": {
+   "extensionId": "1000000001",
+   "extensionNumber": "101",
+   "name": "Alex Morgan",
+   "role": "Super Admin"
+  },
+  "eventType": "Create",
+  "details": {
+   "parameters": [
+    {
+     "key": "",
+     "value": ""
+    }
+   ]
+  }
+ },
+ {
+  "id": "fe3bfada-7cf2-4724-9953-ee261d87cec3",
+  "eventTime": "2026-01-10T05:31:00.000Z",
+  "accountId": "1000000001",
+  "actionId": "RELEASE_NUMBER",
+  "clientIp": "203.0.113.22",
+  "initiator": {
+   "extensionId": "1000000002",
+   "extensionNumber": "102",
+   "name": "Priya Shah",
+   "role": "Admin"
+  },
+  "eventType": "Create",
+  "details": {
+   "parameters": [
+    {
+     "key": "",
+     "value": ""
+    }
+   ]
+  },
+  "target": {
+   "objectId": "50732759691",
+   "objectType": "Extension",
+   "name": "Dana Kim",
+   "extensionNumber": "1045"
+  }
+ },
+ {
+  "id": "8a6a63ec-24ed-46a4-ab4c-b2424a23d596",
+  "eventTime": "2026-01-09T18:53:00.000Z",
+  "accountId": "1000000001",
+  "actionId": "ASSIGN_NUMBER",
+  "clientIp": "198.51.100.7",
+  "initiator": {
+   "extensionId": "1000000001",
+   "extensionNumber": "101",
+   "name": "Alex Morgan",
+   "role": "Super Admin"
+  },
+  "eventType": "Create",
+  "details": {
+   "parameters": [
+    {
+     "key": "",
+     "value": ""
+    }
+   ]
+  },
+  "target": {
+   "objectId": "84339363384",
+   "objectType": "Extension",
+   "name": "Lee Patel",
+   "extensionNumber": "1046"
+  }
+ },
+ {
+  "id": "31dec4f4-df2a-4b79-bc8e-80b36f0e2289",
+  "eventTime": "2026-01-09T12:08:00.000Z",
+  "accountId": "1000000001",
+  "actionId": "ASSIGN_USER",
+  "clientIp": "203.0.113.10",
+  "initiator": {
+   "extensionId": "1000000003",
+   "extensionNumber": "103",
+   "name": "Jordan Lee",
+   "role": "Admin"
+  },
+  "eventType": "CREATE",
+  "details": {
+   "parameters": [
+    {
+     "key": "",
+     "value": ""
+    }
+   ]
+  },
+  "target": {
+   "objectId": "44479970514",
+   "objectType": "Extension",
+   "name": "Main Office",
+   "extensionNumber": "20001"
+  }
+ },
+ {
+  "id": "5b4b1b75-321c-4296-abd8-c67656d050cd",
+  "eventTime": "2026-01-09T05:40:00.000Z",
+  "accountId": "1000000001",
+  "actionId": "RELEASE_NUMBER",
+  "clientIp": "203.0.113.10",
+  "initiator": {
+   "extensionId": "1000000002",
+   "extensionNumber": "102",
+   "name": "Priya Shah",
+   "role": "Admin"
+  },
+  "eventType": "Create",
+  "details": {
+   "parameters": [
+    {
+     "key": "",
+     "value": ""
+    }
+   ]
+  },
+  "target": {
+   "objectId": "60346254465",
+   "objectType": "Extension",
+   "name": "Support Queue",
+   "extensionNumber": "20002"
+  }
+ },
+ {
+  "id": "06ec41ad-ea05-4543-8b0d-590bb0a844e5",
+  "eventTime": "2026-01-09T04:12:00.000Z",
+  "accountId": "1000000001",
+  "actionId": "ASSIGN_NUMBER",
+  "clientIp": "198.51.100.7",
+  "initiator": {
+   "extensionId": "1000000003",
+   "extensionNumber": "103",
+   "name": "Jordan Lee",
+   "role": "Admin"
+  },
+  "eventType": "Create",
+  "details": {
+   "parameters": [
+    {
+     "key": "",
+     "value": ""
+    }
+   ]
+  },
+  "target": {
+   "objectId": "47990908150",
+   "objectType": "Extension",
+   "name": "Chris Taylor",
+   "extensionNumber": "1044"
+  }
+ },
+ {
+  "id": "9e7d6b37-7936-4536-a43d-35702c1eea1f",
+  "eventTime": "2026-01-09T01:14:00.000Z",
+  "accountId": "1000000001",
+  "actionId": "RELEASE_NUMBER",
+  "clientIp": "203.0.113.10",
+  "initiator": {
+   "extensionId": "1000000001",
+   "extensionNumber": "101",
+   "name": "Alex Morgan",
+   "role": "Super Admin"
+  },
+  "eventType": "Create",
+  "details": {
+   "parameters": [
+    {
+     "key": "",
+     "value": ""
+    }
+   ]
+  },
+  "target": {
+   "objectId": "16685011935",
+   "objectType": "Extension",
+   "name": "Support Queue",
+   "extensionNumber": "20002"
+  }
+ },
+ {
+  "id": "3bbbe9ea-a894-4c89-bb61-867626bb7dbd",
+  "eventTime": "2026-01-07T23:00:00.000Z",
+  "accountId": "1000000001",
+  "actionId": "ASSIGN_NUMBER",
+  "clientIp": "203.0.113.22",
+  "initiator": {
+   "extensionId": "1000000001",
+   "extensionNumber": "101",
+   "name": "Alex Morgan",
+   "role": "Super Admin"
+  },
+  "eventType": "Create",
+  "details": {
+   "parameters": [
+    {
+     "key": "",
+     "value": ""
+    }
+   ]
+  },
+  "target": {
+   "objectId": "90878930990",
+   "objectType": "Extension",
+   "name": "Jane Doe",
+   "extensionNumber": "1042"
+  }
+ },
+ {
+  "id": "66934036-d17e-4497-bd48-82a5ce5b2a92",
+  "eventTime": "2026-01-07T03:13:00.000Z",
+  "accountId": "1000000001",
+  "actionId": "ASSIGN_NUMBER",
+  "clientIp": "203.0.113.10",
+  "initiator": {
+   "extensionId": "1000000003",
+   "extensionNumber": "103",
+   "name": "Jordan Lee",
+   "role": "Admin"
+  },
+  "eventType": "Create",
+  "details": {
+   "parameters": [
+    {
+     "key": "",
+     "value": ""
+    }
+   ]
+  },
+  "target": {
+   "objectId": "79578117937",
+   "objectType": "Extension",
+   "name": "Support Queue",
+   "extensionNumber": "20002"
+  }
+ },
+ {
+  "id": "6f15b6ad-2db3-497f-a396-39be7a605a91",
+  "eventTime": "2026-01-06T22:10:00.000Z",
+  "accountId": "1000000001",
+  "actionId": "CHANGE_REGIONAL_SETTINGS:NON_USER",
+  "clientIp": "198.51.100.7",
+  "initiator": {
+   "extensionId": "1000000003",
+   "extensionNumber": "103",
+   "name": "Jordan Lee",
+   "role": "Admin"
+  },
+  "eventType": "Create",
+  "details": {
+   "parameters": [
+    {
+     "key": "",
+     "value": ""
+    }
+   ]
+  },
+  "target": {
+   "objectId": "20018085113",
+   "objectType": "Extension",
+   "name": "Support Queue",
+   "extensionNumber": "20002"
+  }
+ },
+ {
+  "id": "a268aa87-2607-479d-a050-914a9d33a01c",
+  "eventTime": "2026-01-06T14:44:00.000Z",
+  "accountId": "1000000001",
+  "actionId": "LOGIN_SUCCESSFULLY",
+  "clientIp": "203.0.113.22",
+  "initiator": {
+   "extensionId": "1000000001",
+   "extensionNumber": "101",
+   "name": "Alex Morgan",
+   "role": "Super Admin"
+  },
+  "eventType": "Create",
+  "details": {
+   "parameters": [
+    {
+     "key": "",
+     "value": ""
+    }
+   ]
+  }
+ },
+ {
+  "id": "6aa8b9e0-231b-4e14-b291-35bdd70a39d1",
+  "eventTime": "2026-01-06T00:53:00.000Z",
+  "accountId": "1000000001",
+  "actionId": "FAIL_LOGIN",
+  "clientIp": "203.0.113.22",
+  "initiator": {
+   "extensionId": "1000000001",
+   "extensionNumber": "101",
+   "name": "Alex Morgan",
+   "role": "Super Admin"
+  }
+ },
+ {
+  "id": "4265bb31-5374-4902-9620-bf0dc38084a0",
+  "eventTime": "2026-01-05T04:26:00.000Z",
+  "accountId": "1000000001",
+  "actionId": "ASSIGN_NUMBER",
+  "clientIp": "203.0.113.22",
+  "initiator": {
+   "extensionId": "1000000002",
+   "extensionNumber": "102",
+   "name": "Priya Shah",
+   "role": "Admin"
+  },
+  "eventType": "Create",
+  "details": {
+   "parameters": [
+    {
+     "key": "",
+     "value": ""
+    }
+   ]
+  },
+  "target": {
+   "objectId": "30762709428",
+   "objectType": "Extension",
+   "name": "Lee Patel",
+   "extensionNumber": "1046"
+  }
+ },
+ {
+  "id": "f7b103df-2323-4e1e-a201-552240cbacd0",
+  "eventTime": "2026-01-04T15:31:00.000Z",
+  "accountId": "1000000001",
+  "actionId": "DELETE_USER:USER",
+  "clientIp": "203.0.113.10",
+  "initiator": {
+   "extensionId": "1000000001",
+   "extensionNumber": "101",
+   "name": "Alex Morgan",
+   "role": "Super Admin"
+  },
+  "eventType": "Create",
+  "details": {
+   "parameters": [
+    {
+     "key": "",
+     "value": ""
+    }
+   ]
+  },
+  "target": {
+   "objectId": "61943873268",
+   "objectType": "Extension",
+   "name": "Lee Patel",
+   "extensionNumber": "1046"
+  }
+ },
+ {
+  "id": "6e36aab0-d1bc-42d9-a30d-977ee2257159",
+  "eventTime": "2026-01-03T14:05:00.000Z",
+  "accountId": "1000000001",
+  "actionId": "ADD_USER_TO_CQ",
+  "clientIp": "198.51.100.7",
+  "initiator": {
+   "extensionId": "1000000002",
+   "extensionNumber": "102",
+   "name": "Priya Shah",
+   "role": "Admin"
+  },
+  "eventType": "Create",
+  "details": {
+   "parameters": [
+    {
+     "key": "",
+     "value": ""
+    }
+   ]
+  },
+  "target": {
+   "objectId": "65337186821",
+   "objectType": "Extension",
+   "name": "Lee Patel",
+   "extensionNumber": "1046"
+  }
+ },
+ {
+  "id": "65dc9f50-3f63-4f83-bd05-61e6211c70cf",
+  "eventTime": "2026-01-03T04:35:00.000Z",
+  "accountId": "1000000001",
+  "actionId": "ADD_USER_TO_CQ",
+  "clientIp": "203.0.113.22",
+  "initiator": {
+   "extensionId": "1000000001",
+   "extensionNumber": "101",
+   "name": "Alex Morgan",
+   "role": "Super Admin"
+  },
+  "eventType": "Create",
+  "details": {
+   "parameters": [
+    {
+     "key": "",
+     "value": ""
+    }
+   ]
+  },
+  "target": {
+   "objectId": "31820930535",
+   "objectType": "Extension",
+   "name": "Sam Rivera",
+   "extensionNumber": "1043"
+  }
+ },
+ {
+  "id": "b2f14c94-2e05-419a-8b5c-74273f98e277",
+  "eventTime": "2026-01-02T16:11:00.000Z",
+  "accountId": "1000000001",
+  "actionId": "RELEASE_NUMBER",
+  "clientIp": "203.0.113.10",
+  "initiator": {
+   "extensionId": "1000000002",
+   "extensionNumber": "102",
+   "name": "Priya Shah",
+   "role": "Admin"
+  },
+  "eventType": "Create",
+  "details": {
+   "parameters": [
+    {
+     "key": "",
+     "value": ""
+    }
+   ]
+  },
+  "target": {
+   "objectId": "87660975935",
+   "objectType": "Extension",
+   "name": "Chris Taylor",
+   "extensionNumber": "1044"
+  }
+ },
+ {
+  "id": "d42fddbb-7a86-47a2-83c7-1b9abd87a865",
+  "eventTime": "2025-12-31T20:16:00.000Z",
+  "accountId": "1000000001",
+  "actionId": "ASSIGN_USER",
+  "clientIp": "203.0.113.10",
+  "initiator": {
+   "extensionId": "1000000001",
+   "extensionNumber": "101",
+   "name": "Alex Morgan",
+   "role": "Super Admin"
+  },
+  "eventType": "CREATE",
+  "details": {
+   "parameters": [
+    {
+     "key": "",
+     "value": ""
+    }
+   ]
+  },
+  "target": {
+   "objectId": "12217639874",
+   "objectType": "Extension",
+   "name": "Jane Doe",
+   "extensionNumber": "1042"
+  }
+ },
+ {
+  "id": "9be4bcfc-49b6-4a08-b2e6-cc3ababced20",
+  "eventTime": "2025-12-31T19:56:00.000Z",
+  "accountId": "1000000001",
+  "actionId": "ASSIGN_NUMBER:Department",
+  "clientIp": "203.0.113.10",
+  "initiator": {
+   "extensionId": "1000000003",
+   "extensionNumber": "103",
+   "name": "Jordan Lee",
+   "role": "Admin"
+  },
+  "eventType": "Create",
+  "details": {
+   "parameters": [
+    {
+     "key": "",
+     "value": ""
+    }
+   ]
+  },
+  "target": {
+   "objectId": "68033309628",
+   "objectType": "Extension",
+   "name": "Dana Kim",
+   "extensionNumber": "1045"
+  }
+ },
+ {
+  "id": "2188287e-8c5c-415f-8c74-fc1e27e9e06f",
+  "eventTime": "2025-12-31T12:59:00.000Z",
+  "accountId": "1000000001",
+  "actionId": "RELEASE_NUMBER",
+  "clientIp": "203.0.113.10",
+  "initiator": {
+   "extensionId": "1000000002",
+   "extensionNumber": "102",
+   "name": "Priya Shah",
+   "role": "Admin"
+  },
+  "eventType": "Create",
+  "details": {
+   "parameters": [
+    {
+     "key": "",
+     "value": ""
+    }
+   ]
+  },
+  "target": {
+   "objectId": "99019081564",
+   "objectType": "Extension",
+   "name": "Main Office",
+   "extensionNumber": "20001"
+  }
+ },
+ {
+  "id": "9556585e-a997-4351-b54a-09cde5cfedfa",
+  "eventTime": "2025-12-31T08:08:00.000Z",
+  "accountId": "1000000001",
+  "actionId": "LOGIN_SUCCESSFULLY",
+  "clientIp": "198.51.100.7",
+  "initiator": {
+   "extensionId": "1000000003",
+   "extensionNumber": "103",
+   "name": "Jordan Lee",
+   "role": "Admin"
+  },
+  "eventType": "Create",
+  "details": {
+   "parameters": [
+    {
+     "key": "",
+     "value": ""
+    }
+   ]
+  }
+ },
+ {
+  "id": "8aa4248c-8857-49a4-b908-f227c59db916",
+  "eventTime": "2025-12-31T06:11:00.000Z",
+  "accountId": "1000000001",
+  "actionId": "ASSIGN_SMS_RECIPIENT:CALL_QUEUE",
+  "clientIp": "198.51.100.7",
+  "initiator": {
+   "extensionId": "1000000002",
+   "extensionNumber": "102",
+   "name": "Priya Shah",
+   "role": "Admin"
+  },
+  "eventType": "UPDATE",
+  "details": {
+   "parameters": [
+    {
+     "key": "",
+     "value": ""
+    }
+   ]
+  },
+  "target": {
+   "objectId": "97315246274",
+   "objectType": "Extension",
+   "name": "Sam Rivera",
+   "extensionNumber": "1043"
+  }
+ },
+ {
+  "id": "66836886-a260-4d0b-bb45-145c1a81682c",
+  "eventTime": "2025-12-29T15:57:00.000Z",
+  "accountId": "1000000001",
+  "actionId": "CHANGE_REGIONAL_SETTINGS:NON_USER",
+  "clientIp": "203.0.113.10",
+  "initiator": {
+   "extensionId": "1000000002",
+   "extensionNumber": "102",
+   "name": "Priya Shah",
+   "role": "Admin"
+  },
+  "eventType": "Create",
+  "details": {
+   "parameters": [
+    {
+     "key": "",
+     "value": ""
+    }
+   ]
+  },
+  "target": {
+   "objectId": "71026173194",
+   "objectType": "Extension",
+   "name": "Dana Kim",
+   "extensionNumber": "1045"
+  }
+ },
+ {
+  "id": "fd68373b-29ac-41a5-bcbd-1f5ae28af604",
+  "eventTime": "2025-12-29T09:18:00.000Z",
+  "accountId": "1000000001",
+  "actionId": "DELETE_CUSTOM_RULE:BizLocation",
+  "clientIp": "203.0.113.10",
+  "initiator": {
+   "extensionId": "1000000003",
+   "extensionNumber": "103",
+   "name": "Jordan Lee",
+   "role": "Admin"
+  },
+  "eventType": "Create",
+  "details": {
+   "parameters": [
+    {
+     "key": "",
+     "value": ""
+    }
+   ]
+  },
+  "target": {
+   "objectId": "63754114427",
+   "objectType": "Extension",
+   "name": "Main Office",
+   "extensionNumber": "20001"
+  },
+  "comment": "Deleted custom rule After-Hours Rule"
+ },
+ {
+  "id": "b98c67c2-15bd-448f-b261-49edbe4c5ce6",
+  "eventTime": "2025-12-29T07:50:00.000Z",
+  "accountId": "1000000001",
+  "actionId": "ADD_CUSTOM_RULE:BizLocation",
+  "clientIp": "203.0.113.10",
+  "initiator": {
+   "extensionId": "1000000002",
+   "extensionNumber": "102",
+   "name": "Priya Shah",
+   "role": "Admin"
+  },
+  "eventType": "Create",
+  "details": {
+   "parameters": [
+    {
+     "key": "",
+     "value": ""
+    }
+   ]
+  },
+  "target": {
+   "objectId": "31445254287",
+   "objectType": "Extension",
+   "name": "Dana Kim",
+   "extensionNumber": "1045"
+  }
+ },
+ {
+  "id": "ab1031d0-f646-41f4-8a09-7c976bf46c69",
+  "eventTime": "2025-12-25T14:56:00.000Z",
+  "accountId": "1000000001",
+  "actionId": "ADD_EXTENSION:NON_USER",
+  "clientIp": "198.51.100.7",
+  "initiator": {
+   "extensionId": "1000000002",
+   "extensionNumber": "102",
+   "name": "Priya Shah",
+   "role": "Admin"
+  },
+  "eventType": "Create",
+  "details": {
+   "parameters": [
+    {
+     "key": "",
+     "value": ""
+    }
+   ]
+  },
+  "target": {
+   "objectId": "54297208268",
+   "objectType": "Extension",
+   "name": "Sam Rivera",
+   "extensionNumber": "1043"
+  }
+ },
+ {
+  "id": "119a72d1-74c9-4f6a-8c01-1cdd9474031b",
+  "eventTime": "2025-12-25T06:07:00.000Z",
+  "accountId": "1000000001",
+  "actionId": "ADD_CUSTOM_RULE:BizLocation",
+  "clientIp": "203.0.113.10",
+  "initiator": {
+   "extensionId": "1000000002",
+   "extensionNumber": "102",
+   "name": "Priya Shah",
+   "role": "Admin"
+  },
+  "eventType": "Create",
+  "details": {
+   "parameters": [
+    {
+     "key": "",
+     "value": ""
+    }
+   ]
+  },
+  "target": {
+   "objectId": "48417112790",
+   "objectType": "Extension",
+   "name": "Lee Patel",
+   "extensionNumber": "1046"
+  }
+ },
+ {
+  "id": "73ccef03-46f5-41b4-b156-d1ad330c16a3",
+  "eventTime": "2025-12-24T14:28:00.000Z",
+  "accountId": "1000000001",
+  "actionId": "RELEASE_NUMBER",
+  "clientIp": "198.51.100.7",
+  "initiator": {
+   "extensionId": "1000000003",
+   "extensionNumber": "103",
+   "name": "Jordan Lee",
+   "role": "Admin"
+  },
+  "eventType": "Create",
+  "details": {
+   "parameters": [
+    {
+     "key": "",
+     "value": ""
+    }
+   ]
+  },
+  "target": {
+   "objectId": "77892103445",
+   "objectType": "Extension",
+   "name": "Lee Patel",
+   "extensionNumber": "1046"
+  }
+ },
+ {
+  "id": "c6c80e2b-c8c6-44b2-bb84-44d18e317041",
+  "eventTime": "2025-12-23T19:54:00.000Z",
+  "accountId": "1000000001",
+  "actionId": "CHANGE_PHONE_NUMBER_TYPE",
+  "clientIp": "198.51.100.7",
+  "initiator": {
+   "extensionId": "1000000003",
+   "extensionNumber": "103",
+   "name": "Jordan Lee",
+   "role": "Admin"
+  },
+  "eventType": "Create",
+  "details": {
+   "parameters": [
+    {
+     "key": "",
+     "value": ""
+    }
+   ]
+  },
+  "target": {
+   "objectId": "40308822164",
+   "objectType": "Extension",
+   "name": "Lee Patel",
+   "extensionNumber": "1046"
+  }
+ },
+ {
+  "id": "04c9d78d-82b3-4599-8604-871926debfdb",
+  "eventTime": "2025-12-23T18:05:00.000Z",
+  "accountId": "1000000001",
+  "actionId": "CHANGE_REGIONAL_SETTINGS:NON_USER",
+  "clientIp": "203.0.113.22",
+  "initiator": {
+   "extensionId": "1000000003",
+   "extensionNumber": "103",
+   "name": "Jordan Lee",
+   "role": "Admin"
+  },
+  "eventType": "Create",
+  "details": {
+   "parameters": [
+    {
+     "key": "",
+     "value": ""
+    }
+   ]
+  },
+  "target": {
+   "objectId": "34809905042",
+   "objectType": "Extension",
+   "name": "Sam Rivera",
+   "extensionNumber": "1043"
+  }
+ },
+ {
+  "id": "ed84e91e-f132-4f2d-a040-015ce064a114",
+  "eventTime": "2025-12-23T08:44:00.000Z",
+  "accountId": "1000000001",
+  "actionId": "FAIL_LOGIN",
+  "clientIp": "198.51.100.7",
+  "initiator": {
+   "extensionId": "1000000003",
+   "extensionNumber": "103",
+   "name": "Jordan Lee",
+   "role": "Admin"
+  }
+ },
+ {
+  "id": "7f150524-34b9-45df-9e77-69b10f4205b4",
+  "eventTime": "2025-12-22T09:17:00.000Z",
+  "accountId": "1000000001",
+  "actionId": "ASSIGN_SMS_RECIPIENT:CALL_QUEUE",
+  "clientIp": "198.51.100.7",
+  "initiator": {
+   "extensionId": "1000000003",
+   "extensionNumber": "103",
+   "name": "Jordan Lee",
+   "role": "Admin"
+  },
+  "eventType": "UPDATE",
+  "details": {
+   "parameters": [
+    {
+     "key": "",
+     "value": ""
+    }
+   ]
+  },
+  "target": {
+   "objectId": "71478793967",
+   "objectType": "Extension",
+   "name": "Jane Doe",
+   "extensionNumber": "1042"
+  }
+ },
+ {
+  "id": "a7e6529b-ce76-49f4-b721-6e9ee7a46309",
+  "eventTime": "2025-12-21T06:51:00.000Z",
+  "accountId": "1000000001",
+  "actionId": "LOGIN_SUCCESSFULLY",
+  "clientIp": "198.51.100.7",
+  "initiator": {
+   "extensionId": "1000000001",
+   "extensionNumber": "101",
+   "name": "Alex Morgan",
+   "role": "Super Admin"
+  },
+  "eventType": "Create",
+  "details": {
+   "parameters": [
+    {
+     "key": "",
+     "value": ""
+    }
+   ]
+  }
+ },
+ {
+  "id": "9118bb16-000f-49c8-9a35-8ca00d75985d",
+  "eventTime": "2025-12-20T19:51:00.000Z",
+  "accountId": "1000000001",
+  "actionId": "ADD_EXTENSION:NON_USER",
+  "clientIp": "198.51.100.7",
+  "initiator": {
+   "extensionId": "1000000001",
+   "extensionNumber": "101",
+   "name": "Alex Morgan",
+   "role": "Super Admin"
+  },
+  "eventType": "Create",
+  "details": {
+   "parameters": [
+    {
+     "key": "",
+     "value": ""
+    }
+   ]
+  },
+  "target": {
+   "objectId": "93166071343",
+   "objectType": "Extension",
+   "name": "Chris Taylor",
+   "extensionNumber": "1044"
+  }
+ },
+ {
+  "id": "0fd630f1-f29d-4da9-953f-48f1a09f76b5",
+  "eventTime": "2025-12-19T13:24:00.000Z",
+  "accountId": "1000000001",
+  "actionId": "RELEASE_NUMBER",
+  "clientIp": "198.51.100.7",
+  "initiator": {
+   "extensionId": "1000000001",
+   "extensionNumber": "101",
+   "name": "Alex Morgan",
+   "role": "Super Admin"
+  },
+  "eventType": "Create",
+  "details": {
+   "parameters": [
+    {
+     "key": "",
+     "value": ""
+    }
+   ]
+  },
+  "target": {
+   "objectId": "15998696980",
+   "objectType": "Extension",
+   "name": "Sam Rivera",
+   "extensionNumber": "1043"
+  }
+ },
+ {
+  "id": "892f902b-d23f-4824-928b-2f330c5c7fd0",
+  "eventTime": "2025-12-18T16:54:00.000Z",
+  "accountId": "1000000001",
+  "actionId": "CHANGE_PHONE_NUMBER_TYPE",
+  "clientIp": "203.0.113.22",
+  "initiator": {
+   "extensionId": "1000000001",
+   "extensionNumber": "101",
+   "name": "Alex Morgan",
+   "role": "Super Admin"
+  },
+  "eventType": "Create",
+  "details": {
+   "parameters": [
+    {
+     "key": "",
+     "value": ""
+    }
+   ]
+  },
+  "target": {
+   "objectId": "16798022749",
+   "objectType": "Extension",
+   "name": "Dana Kim",
+   "extensionNumber": "1045"
+  }
+ },
+ {
+  "id": "7631a992-f0ce-4835-85c6-af0758d5563d",
+  "eventTime": "2025-12-17T22:38:00.000Z",
+  "accountId": "1000000001",
+  "actionId": "ASSIGN_NUMBER:Department",
+  "clientIp": "203.0.113.10",
+  "initiator": {
+   "extensionId": "1000000003",
+   "extensionNumber": "103",
+   "name": "Jordan Lee",
+   "role": "Admin"
+  },
+  "eventType": "Create",
+  "details": {
+   "parameters": [
+    {
+     "key": "",
+     "value": ""
+    }
+   ]
+  },
+  "target": {
+   "objectId": "25508781368",
+   "objectType": "Extension",
+   "name": "Dana Kim",
+   "extensionNumber": "1045"
+  }
+ }
+]
